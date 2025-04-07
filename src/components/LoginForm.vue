@@ -11,6 +11,6 @@
   </form>
   <div class="flex gap-3 mt-2">
     <p class="m-0">Pas encore de compte ?</p>
-    <a href="">Je m'inscris</a>
+    <router-link to="/register">Je m'inscris</router-link>
   </div>
 </template>
