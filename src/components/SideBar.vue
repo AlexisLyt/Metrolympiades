@@ -10,7 +10,9 @@ const router = useRouter();
 
 
 const teamName = ref('')
-teamName.value = JSON.parse(localStorage.getItem('user')).team.name
+if (localStorage.getItem('user') !== null) {
+  teamName.value = JSON.parse(localStorage.getItem('user')).team.name
+}
 
 function logout() {
   localStorage.removeItem('user')
@@ -19,10 +21,11 @@ function logout() {
 </script>
 
 <template>
-  <div class="border b-r-white b-r-solid w-60 h-screen">
+  <div class="border b-r-white b-r-solid w-60">
     <div class="header ml-3">
       <h2>Métrolympiades</h2>
-      <h3>{{ teamName }}</h3>
+      <h3 v-if="teamName !== ''">{{ teamName }}</h3>
+      <h3 v-else class="italic font-200">Utilisateur non connecté</h3>
     </div>
     <div class="menu_items flex flex-col gap-3 ml-2 mt-5">
       <router-link to="/leaderboard" class="menu_item no-underline flex items-center gap-2 hover:bg-gray-700 hover:text-blue-600 p-2 rounded">
