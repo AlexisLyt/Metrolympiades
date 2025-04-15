@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from '@/views/LoginView.vue'
 import RegisterView from '@/views/RegisterView.vue'
 import LeaderboardView from '@/views/LeaderboardView.vue'
+import GamesView from '@/views/GamesView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,9 +21,27 @@ const router = createRouter({
       path: '/leaderboard',
       name: 'leaderboard',
       component: LeaderboardView,
-    }
-
+    },
+    {
+      path: '/games',
+      name: 'games',
+      component: GamesView,
+      meta: {
+        requiresAuth: true,
+      },
+    },
   ],
 })
+
+router.beforeEach((to, _, next) => {
+  const isAuthenticated = localStorage.getItem('user') !== null
+
+  if (to.matched.some(record => record.meta.requiresAuth) && !isAuthenticated) {
+    next({ name: 'login' })
+  } else {
+    next()
+  }
+})
+
 
 export default router
