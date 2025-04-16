@@ -40,10 +40,14 @@ function logout() {
         <IconGame />
         <span>Mes matches</span>
       </router-link>
-      <button @click="logout" class="menu_item no-underline flex items-center gap-2 font-size-4 bg-[#313338] border-none cursor-pointer hover:bg-gray-700 hover:text-blue-600 p-2 rounded">
+      <button v-if="teamName !== ''" @click="logout" class="menu_item no-underline flex items-center gap-2 font-size-4 bg-[#313338] border-none cursor-pointer hover:bg-gray-700 hover:text-blue-600 p-2 rounded">
         <IconLogout/>
         <span>Se déconnecter</span>
       </button>
+      <router-link v-else to="/login" class="menu_item no-underline flex items-center gap-2 hover:bg-gray-700 hover:text-blue-600 p-2 rounded">
+        <IconLogout/>
+        <span>Se connecter</span>
+      </router-link>
     </div>
   </div>
 </template>
