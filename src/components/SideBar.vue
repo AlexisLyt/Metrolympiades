@@ -32,11 +32,11 @@ function logout() {
         <IconLeaderboard />
         <span>Classement général</span>
       </router-link>
-      <router-link to="/team" class="menu_item no-underline flex items-center gap-2 hover:bg-gray-700 hover:text-blue-600 p-2 rounded">
+      <router-link v-if="teamName !== ''" to="/team" class="menu_item no-underline flex items-center gap-2 hover:bg-gray-700 hover:text-blue-600 p-2 rounded">
         <IconTeam />
         <span>Mon équipe</span>
       </router-link>
-      <router-link to="/games" class="menu_item no-underline flex items-center gap-2 hover:bg-gray-700 hover:text-blue-600 p-2 rounded">
+      <router-link v-if="teamName !== ''" to="/games" class="menu_item no-underline flex items-center gap-2 hover:bg-gray-700 hover:text-blue-600 p-2 rounded">
         <IconGame />
         <span>Mes matches</span>
       </router-link>
