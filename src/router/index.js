@@ -4,6 +4,7 @@ import RegisterView from '@/views/RegisterView.vue'
 import LeaderboardView from '@/views/LeaderboardView.vue'
 import GamesView from '@/views/GamesView.vue'
 import TeamView from '@/views/TeamView.vue'
+import GameCreationView from '@/views/GameCreationView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -35,6 +36,14 @@ const router = createRouter({
       path: '/team',
       name: 'team',
       component: TeamView,
+      meta: {
+        requiresAuth: true,
+      },
+    },
+    {
+      path: '/game',
+      name: 'game',
+      component: GameCreationView,
       meta: {
         requiresAuth: true,
       },
