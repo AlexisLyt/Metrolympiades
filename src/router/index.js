@@ -27,9 +27,6 @@ const router = createRouter({
       path: '/leaderboard',
       name: 'leaderboard',
       component: LeaderboardView,
-      meta: {
-        requiresAuth: true,
-      },
     },
     {
       path: '/games',
@@ -60,6 +57,10 @@ const router = createRouter({
 
 router.beforeEach((to, _, next) => {
   const isAuthenticated = localStorage.getItem('user') !== null
+  
+  if(to.name.match('login') && isAuthenticated){
+    next({name: 'leaderboard'})
+  }
 
   if (to.matched.some(record => record.meta.requiresAuth) && !isAuthenticated) {
     next({ name: 'login' })
