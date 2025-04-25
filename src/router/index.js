@@ -27,6 +27,9 @@ const router = createRouter({
       path: '/leaderboard',
       name: 'leaderboard',
       component: LeaderboardView,
+      meta: {
+        requiresAuth: true,
+      },
     },
     {
       path: '/games',
